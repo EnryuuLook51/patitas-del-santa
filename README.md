@@ -25,6 +25,8 @@ src/main/java/pe/edu/uns/patitas/
 ```
 Diagrama de clases: [docs/diagrama-clases.md](docs/diagrama-clases.md)
 
+**Responsabilidades y flujo de trabajo: [CONTRIBUTING.md](CONTRIBUTING.md)**
+
 ## Equipo y ramas
 | Integrante | Rama | Tarea |
 |---|---|---|

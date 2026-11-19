@@ -49,7 +49,7 @@ public class Mascota {
     private Dueno dueno;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "mascota", cascade = CascadeType.REMOVE)
     private List<Cita> citas = new ArrayList<>();
 
     public Mascota() {

@@ -95,6 +95,38 @@ Valores de enums: `especie` = PERRO, GATO, CONEJO, AVE, OTRO · `sexo` = MACHO, 
 
 ## 3. Cómo trabajar con Git
 
+### Resumen paso a paso
+
+**Paso 1:** Franco crea el repo y sube la estructura base a `main` ✅ (ya hecho).
+
+**Paso 2: cada uno trabaja en su rama**
+```bash
+git clone https://github.com/EnryuuLook51/patitas-del-santa.git
+cd patitas-del-santa
+git checkout feature/dueno-mascota       # Franco
+git checkout feature/veterinario-cita    # Julio
+git checkout test/postman                # Ilario
+```
+> Las ramas **ya existen en GitHub**, por eso se usa `git checkout <rama>` **sin** `-b`.
+> (`-b` crea una rama nueva; solo úsalo si necesitas una rama adicional, ej. `git checkout -b fix/validacion-cita`).
+
+**Paso 3: trabajar y subir cambios**
+```bash
+git add .
+git commit -m "Agrega CRUD de Veterinario"
+git push -u origin feature/veterinario-cita
+```
+
+**Paso 4: Pull Request.** En GitHub abren **Compare & pull request** hacia `main`, otro compañero lo revisa y se hace merge.
+
+**Paso 5: actualizarse cuando otro hizo merge**
+```bash
+git checkout main
+git pull
+git checkout feature/mi-rama
+git merge main      # resuelven conflictos si los hay
+```
+
 ### Primera vez
 ```bash
 git clone https://github.com/EnryuuLook51/patitas-del-santa.git
@@ -136,6 +168,15 @@ git push
 ---
 
 ## 4. Reglas del equipo
+
+### Reglas para evitar conflictos
+1. Las entidades del `model` las sube Franco primero. Si alguien necesita cambiar una, lo avisa en el grupo.
+2. Cada uno toca solo sus archivos. `application.properties` y `pom.xml` son solo de Franco.
+3. Commits pequeños y frecuentes, con mensajes claros.
+4. Nadie hace `git push --force` a `main`.
+5. El `.gitignore` ya ignora `target/`, `.idea/` y `*.iml`; no lo borren ni suban esas carpetas.
+
+### Reglas generales
 1. ❌ Nadie hace `push` directo a `main`. Todo entra por Pull Request.
 2. ❌ Nada de `git push --force`.
 3. ✏️ Solo tocas **tus** archivos. Cambios en `model/`, `pom.xml` o `application.properties` → avisar a Franco.

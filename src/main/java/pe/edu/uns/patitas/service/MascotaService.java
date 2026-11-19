@@ -45,7 +45,9 @@ public class MascotaService {
     @Transactional
     public Mascota crear(Mascota mascota) {
         mascota.setId(null);
-        mascota.setDueno(resolverDueno(mascota.getDueno()));
+        Dueno dueno = resolverDueno(mascota.getDueno());
+        mascota.setDueno(dueno);
+        dueno.getMascotas().add(mascota); // mantener sincronizados ambos lados de la relación
         return mascotaRepository.save(mascota);
     }
 
@@ -59,7 +61,13 @@ public class MascotaService {
         mascota.setSexo(datos.getSexo());
         mascota.setFechaNacimiento(datos.getFechaNacimiento());
         mascota.setPeso(datos.getPeso());
-        mascota.setDueno(resolverDueno(datos.getDueno()));
+
+        Dueno nuevoDueno = resolverDueno(datos.getDueno());
+        if (!nuevoDueno.getId().equals(mascota.getDueno().getId())) {
+            mascota.getDueno().getMascotas().remove(mascota);
+            nuevoDueno.getMascotas().add(mascota);
+            mascota.setDueno(nuevoDueno);
+        }
         return mascotaRepository.save(mascota);
     }
 
@@ -67,6 +75,7 @@ public class MascotaService {
     @Transactional
     public void eliminar(Long id) {
         Mascota mascota = obtener(id);
+        mascota.getDueno().getMascotas().remove(mascota);
         mascotaRepository.delete(mascota);
     }
 

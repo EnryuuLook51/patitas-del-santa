@@ -42,7 +42,7 @@ public class Dueno {
     private String direccion;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "dueno", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "dueno", cascade = CascadeType.REMOVE)
     private List<Mascota> mascotas = new ArrayList<>();
 
     public Dueno() {

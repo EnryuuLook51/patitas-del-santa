@@ -1,0 +1,2380 @@
+{
+  "info": {
+    "_postman_id": "d4f63f8d-590d-50f0-9c75-f8793a7240ce",
+    "name": "Patitas del Santa - API REST",
+    "description": "Pruebas de la Clínica Veterinaria Patitas del Santa (Spring Boot + H2). Ejecutar en orden con la app recién iniciada (mvn spring-boot:run).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Dueños",
+      "item": [
+        {
+          "name": "Registrar dueño 1 - Carmen",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"El DNI devuelto es el enviado\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.dni.length === 8).to.be.true;",
+                  "});",
+                  "pm.test(\"Se generó un id\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.id > 0).to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"duenoId1\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"45678912\",\n  \"nombres\": \"Carmen Rosa\",\n  \"apellidos\": \"Ríos Paredes\",\n  \"celular\": \"987654321\",\n  \"correo\": \"carmen.rios@gmail.com\",\n  \"direccion\": \"Av. Pacífico 123, Nuevo Chimbote\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar dueño 2 - Luis",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"El DNI devuelto es el enviado\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.dni.length === 8).to.be.true;",
+                  "});",
+                  "pm.test(\"Se generó un id\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.id > 0).to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"duenoId2\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"41237896\",\n  \"nombres\": \"Luis Alberto\",\n  \"apellidos\": \"Vega Castillo\",\n  \"celular\": \"912345678\",\n  \"correo\": \"luis.vega@hotmail.com\",\n  \"direccion\": \"Urb. Buenos Aires Mz. C Lt. 8, Nuevo Chimbote\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar dueño 3 - María",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"El DNI devuelto es el enviado\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.dni.length === 8).to.be.true;",
+                  "});",
+                  "pm.test(\"Se generó un id\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.id > 0).to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"duenoId3\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"70145236\",\n  \"nombres\": \"María Elena\",\n  \"apellidos\": \"Torres Huamán\",\n  \"celular\": \"956789123\",\n  \"correo\": \"maria.torres@gmail.com\",\n  \"direccion\": \"Jr. Leoncio Prado 456, Chimbote\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar dueño 4 - Pedro (se eliminará)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"El DNI devuelto es el enviado\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.dni.length === 8).to.be.true;",
+                  "});",
+                  "pm.test(\"Se generó un id\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.id > 0).to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"duenoId4\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"48521479\",\n  \"nombres\": \"Pedro José\",\n  \"apellidos\": \"Sánchez Lara\",\n  \"celular\": \"945612378\",\n  \"correo\": \"pedro.sanchez@gmail.com\",\n  \"direccion\": \"Av. Anchoveta 789, Nuevo Chimbote\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Listar dueños",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Hay 4 dueños registrados\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 4).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Consultar dueño por id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Es Carmen\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.nombres === 'Carmen Rosa').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos/{{duenoId1}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos",
+                "{{duenoId1}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Consultar dueño por DNI",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Es Luis\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.nombres === 'Luis Alberto').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos/dni/41237896",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos",
+                "dni",
+                "41237896"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar dueño 2 (nuevo celular y dirección)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Celular actualizado\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.celular === '923456781').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos/{{duenoId2}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos",
+                "{{duenoId2}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"41237896\",\n  \"nombres\": \"Luis Alberto\",\n  \"apellidos\": \"Vega Castillo\",\n  \"celular\": \"923456781\",\n  \"correo\": \"luis.vega@hotmail.com\",\n  \"direccion\": \"Av. Meiggs 1020, Chimbote\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Mascotas",
+      "item": [
+        {
+          "name": "Registrar mascota 1 - Rocky (Carmen)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Pertenece a Carmen\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.dueno.dni === '45678912').to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"mascotaId1\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Rocky\",\n  \"especie\": \"PERRO\",\n  \"raza\": \"Labrador\",\n  \"sexo\": \"MACHO\",\n  \"fechaNacimiento\": \"2020-03-15\",\n  \"peso\": 28.4,\n  \"dueno\": {\n    \"id\": {{duenoId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar mascota 2 - Luna (Carmen)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"mascotaId2\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Luna\",\n  \"especie\": \"GATO\",\n  \"raza\": \"Siamés\",\n  \"sexo\": \"HEMBRA\",\n  \"fechaNacimiento\": \"2022-07-01\",\n  \"peso\": 4.2,\n  \"dueno\": {\n    \"id\": {{duenoId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar mascota 3 - Michi (Carmen)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"mascotaId3\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Michi\",\n  \"especie\": \"GATO\",\n  \"raza\": \"Mestizo\",\n  \"sexo\": \"MACHO\",\n  \"fechaNacimiento\": \"2023-01-20\",\n  \"peso\": 3.8,\n  \"dueno\": {\n    \"id\": {{duenoId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar mascota 4 - Max (Luis)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"mascotaId4\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Max\",\n  \"especie\": \"PERRO\",\n  \"raza\": \"Pastor Alemán\",\n  \"sexo\": \"MACHO\",\n  \"fechaNacimiento\": \"2019-11-10\",\n  \"peso\": 32.0,\n  \"dueno\": {\n    \"id\": {{duenoId2}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar mascota 5 - Copito (María)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"mascotaId5\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Copito\",\n  \"especie\": \"CONEJO\",\n  \"raza\": \"Angora\",\n  \"sexo\": \"HEMBRA\",\n  \"fechaNacimiento\": \"2024-02-14\",\n  \"peso\": 1.6,\n  \"dueno\": {\n    \"id\": {{duenoId3}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar mascota 6 - Piolín (se eliminará)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"mascotaId6\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Piolín\",\n  \"especie\": \"AVE\",\n  \"raza\": \"Canario\",\n  \"sexo\": \"MACHO\",\n  \"fechaNacimiento\": \"2025-05-05\",\n  \"peso\": 0.03,\n  \"dueno\": {\n    \"id\": {{duenoId3}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Listar mascotas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Hay 6 mascotas registradas\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 6).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Consultar mascota por id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Es Max\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.nombre === 'Max').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas/{{mascotaId4}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas",
+                "{{mascotaId4}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar peso de Rocky (nueva visita)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Peso actualizado a 29.1 kg\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.peso === 29.1).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas/{{mascotaId1}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas",
+                "{{mascotaId1}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Rocky\",\n  \"especie\": \"PERRO\",\n  \"raza\": \"Labrador\",\n  \"sexo\": \"MACHO\",\n  \"fechaNacimiento\": \"2020-03-15\",\n  \"peso\": 29.1,\n  \"dueno\": {\n    \"id\": {{duenoId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Veterinarios",
+      "item": [
+        {
+          "name": "Registrar veterinario 1 - Dra. Rosa Medina",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"vetId1\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"colegiatura\": \"CMVP-04521\",\n  \"nombres\": \"Rosa\",\n  \"apellidos\": \"Medina Salazar\",\n  \"especialidad\": \"Medicina general\",\n  \"activo\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar veterinario 2 - Dr. Jorge Paredes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"vetId2\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"colegiatura\": \"CMVP-07834\",\n  \"nombres\": \"Jorge\",\n  \"apellidos\": \"Paredes Linares\",\n  \"especialidad\": \"Cirugía\",\n  \"activo\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Registrar veterinario 3 - Dra. Ana Flores (se eliminará)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"vetId3\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"colegiatura\": \"CMVP-09912\",\n  \"nombres\": \"Ana\",\n  \"apellidos\": \"Flores Ruiz\",\n  \"especialidad\": \"Dermatología\",\n  \"activo\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Listar veterinarios",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Hay 3 veterinarios\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 3).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Consultar veterinario por id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Colegiatura correcta\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.colegiatura === 'CMVP-04521').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios/{{vetId1}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios",
+                "{{vetId1}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar especialidad del Dr. Paredes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Especialidad actualizada\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.especialidad === 'Cirugía y traumatología').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios/{{vetId2}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios",
+                "{{vetId2}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"colegiatura\": \"CMVP-07834\",\n  \"nombres\": \"Jorge\",\n  \"apellidos\": \"Paredes Linares\",\n  \"especialidad\": \"Cirugía y traumatología\",\n  \"activo\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Citas",
+      "item": [
+        {
+          "name": "Programar cita 1 - Rocky / Vacunación",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Toda cita nace PROGRAMADA\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.estado === 'PROGRAMADA').to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"citaId1\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-02T09:00:00\",\n  \"motivo\": \"Vacunación antirrábica\",\n  \"mascota\": {\n    \"id\": {{mascotaId1}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Programar cita 2 - Luna / Control",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Toda cita nace PROGRAMADA\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.estado === 'PROGRAMADA').to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"citaId2\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-02T10:30:00\",\n  \"motivo\": \"Control de peso\",\n  \"mascota\": {\n    \"id\": {{mascotaId2}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Programar cita 3 - Max / Herida",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Toda cita nace PROGRAMADA\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.estado === 'PROGRAMADA').to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"citaId3\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-03T16:00:00\",\n  \"motivo\": \"Herida en pata trasera\",\n  \"mascota\": {\n    \"id\": {{mascotaId4}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId2}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Programar cita 4 - Copito / Desparasitación",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.test(\"Aunque se envíe ATENDIDA, nace PROGRAMADA\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.estado === 'PROGRAMADA').to.be.true;",
+                  "});",
+                  "pm.collectionVariables.set(\"citaId4\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-04T11:00:00\",\n  \"motivo\": \"Desparasitación\",\n  \"estado\": \"ATENDIDA\",\n  \"mascota\": {\n    \"id\": {{mascotaId5}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Programar cita 5 - Michi (se eliminará)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 201 Created\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "pm.collectionVariables.set(\"citaId5\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-05T09:00:00\",\n  \"motivo\": \"Control general\",\n  \"mascota\": {\n    \"id\": {{mascotaId3}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId2}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Listar citas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Hay 5 citas\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 5).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Consultar cita por id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Es la cita de Max\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.mascota.nombre === 'Max').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas/{{citaId3}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas",
+                "{{citaId3}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atender cita 1 (diagnóstico y costo)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Estado ATENDIDA\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.estado === 'ATENDIDA').to.be.true;",
+                  "});",
+                  "pm.test(\"Costo S/ 45.00\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.costo === 45).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas/{{citaId1}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas",
+                "{{citaId1}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-02T09:00:00\",\n  \"motivo\": \"Vacunación antirrábica\",\n  \"estado\": \"ATENDIDA\",\n  \"diagnostico\": \"Vacuna antirrábica aplicada. Paciente sano.\",\n  \"costo\": 45.0,\n  \"mascota\": {\n    \"id\": {{mascotaId1}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Cancelar cita 3 (cliente no llegó)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Estado CANCELADA\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.estado === 'CANCELADA').to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas/{{citaId3}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas",
+                "{{citaId3}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-03T16:00:00\",\n  \"motivo\": \"Herida en pata trasera\",\n  \"estado\": \"CANCELADA\",\n  \"mascota\": {\n    \"id\": {{mascotaId4}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId2}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Búsquedas personalizadas",
+      "item": [
+        {
+          "name": "Mascotas de Carmen por DNI 45678912",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Carmen tiene 3 mascotas\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 3).to.be.true;",
+                  "});",
+                  "pm.test(\"Todas son de Carmen\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.every(m => m.dueno.dni === '45678912')).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas/dueno/45678912",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas",
+                "dueno",
+                "45678912"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Mascotas de María por DNI 70145236",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"María tiene 2 mascotas\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 2).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas/dueno/70145236",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas",
+                "dueno",
+                "70145236"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Citas programadas de la Dra. Medina",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"2 citas programadas (la 1 ya fue atendida)\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 2).to.be.true;",
+                  "});",
+                  "pm.test(\"Todas PROGRAMADA\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.every(c => c.estado === 'PROGRAMADA')).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas/veterinario/{{vetId1}}/programadas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas",
+                "veterinario",
+                "{{vetId1}}",
+                "programadas"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Validaciones de negocio",
+      "item": [
+        {
+          "name": "Error: DNI repetido",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"45678912\",\n  \"nombres\": \"Carmen Rosa\",\n  \"apellidos\": \"Ríos Paredes\",\n  \"celular\": \"987654321\",\n  \"correo\": \"carmen.rios@gmail.com\",\n  \"direccion\": \"Av. Pacífico 123, Nuevo Chimbote\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error: DNI con formato inválido",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dni\": \"1234\",\n  \"nombres\": \"Pedro José\",\n  \"apellidos\": \"Sánchez Lara\",\n  \"celular\": \"945612378\",\n  \"correo\": \"pedro.sanchez@gmail.com\",\n  \"direccion\": \"Av. Anchoveta 789, Nuevo Chimbote\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error: mascota sin dueño",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Firulais\",\n  \"especie\": \"PERRO\",\n  \"raza\": \"Mestizo\",\n  \"sexo\": \"MACHO\",\n  \"peso\": 10.0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error: mascota con dueño inexistente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 404 Not Found\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Firulais\",\n  \"especie\": \"PERRO\",\n  \"raza\": \"Mestizo\",\n  \"sexo\": \"MACHO\",\n  \"peso\": 10.0,\n  \"dueno\": {\n    \"id\": 999\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error: colegiatura repetida",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"colegiatura\": \"CMVP-04521\",\n  \"nombres\": \"Otro\",\n  \"apellidos\": \"Médico\",\n  \"especialidad\": \"Medicina general\",\n  \"activo\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error: cita con fecha pasada",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2025-06-10T10:00:00\",\n  \"motivo\": \"Control\",\n  \"mascota\": {\n    \"id\": {{mascotaId1}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error: cita con costo negativo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2026-12-10T10:00:00\",\n  \"motivo\": \"Control\",\n  \"costo\": -20.0,\n  \"mascota\": {\n    \"id\": {{mascotaId1}}\n  },\n  \"veterinario\": {\n    \"id\": {{vetId1}}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Error: eliminar veterinario con citas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 400 Bad Request\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios/{{vetId1}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios",
+                "{{vetId1}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Error: dueño inexistente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 404 Not Found\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos/999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos",
+                "999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Error: buscar mascotas de DNI no registrado",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 404 Not Found\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas/dueno/00000000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas",
+                "dueno",
+                "00000000"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Eliminaciones",
+      "item": [
+        {
+          "name": "Eliminar cita 5",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 204 No Content\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas/{{citaId5}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas",
+                "{{citaId5}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar mascota 6 - Piolín",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 204 No Content\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas/{{mascotaId6}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas",
+                "{{mascotaId6}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar veterinario 3 - Dra. Flores",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 204 No Content\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios/{{vetId3}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios",
+                "{{vetId3}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar dueño 4 - Pedro",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 204 No Content\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos/{{duenoId4}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos",
+                "{{duenoId4}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Verificar: dueño 4 ya no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 404 Not Found\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos/{{duenoId4}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos",
+                "{{duenoId4}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Verificar: quedan 3 dueños",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"3 dueños\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 3).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/duenos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "duenos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Verificar: quedan 5 mascotas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"5 mascotas\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 5).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mascotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mascotas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Verificar: quedan 2 veterinarios",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"2 veterinarios\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 2).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/veterinarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Verificar: quedan 4 citas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Código de estado 200 OK\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"4 citas\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.length === 4).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/citas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "citas"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "duenoId1",
+      "value": ""
+    },
+    {
+      "key": "duenoId2",
+      "value": ""
+    },
+    {
+      "key": "duenoId3",
+      "value": ""
+    },
+    {
+      "key": "duenoId4",
+      "value": ""
+    },
+    {
+      "key": "duenoId5",
+      "value": ""
+    },
+    {
+      "key": "duenoId6",
+      "value": ""
+    },
+    {
+      "key": "mascotaId1",
+      "value": ""
+    },
+    {
+      "key": "mascotaId2",
+      "value": ""
+    },
+    {
+      "key": "mascotaId3",
+      "value": ""
+    },
+    {
+      "key": "mascotaId4",
+      "value": ""
+    },
+    {
+      "key": "mascotaId5",
+      "value": ""
+    },
+    {
+      "key": "mascotaId6",
+      "value": ""
+    },
+    {
+      "key": "vetId1",
+      "value": ""
+    },
+    {
+      "key": "vetId2",
+      "value": ""
+    },
+    {
+      "key": "vetId3",
+      "value": ""
+    },
+    {
+      "key": "vetId4",
+      "value": ""
+    },
+    {
+      "key": "vetId5",
+      "value": ""
+    },
+    {
+      "key": "vetId6",
+      "value": ""
+    },
+    {
+      "key": "citaId1",
+      "value": ""
+    },
+    {
+      "key": "citaId2",
+      "value": ""
+    },
+    {
+      "key": "citaId3",
+      "value": ""
+    },
+    {
+      "key": "citaId4",
+      "value": ""
+    },
+    {
+      "key": "citaId5",
+      "value": ""
+    },
+    {
+      "key": "citaId6",
+      "value": ""
+    }
+  ]
+}

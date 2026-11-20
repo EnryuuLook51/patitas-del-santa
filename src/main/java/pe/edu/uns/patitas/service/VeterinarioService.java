@@ -3,6 +3,7 @@ package pe.edu.uns.patitas.service;
 import pe.edu.uns.patitas.exception.RecursoNoEncontradoException;
 import pe.edu.uns.patitas.exception.ReglaNegocioException;
 import pe.edu.uns.patitas.model.Veterinario;
+import pe.edu.uns.patitas.repository.CitaRepository;
 import pe.edu.uns.patitas.repository.VeterinarioRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.List;
 @Service
 public class VeterinarioService {
     private final VeterinarioRepository veterinarioRepository;
+    private final CitaRepository citaRepository;
 
-    public VeterinarioService(VeterinarioRepository veterinarioRepository) {
+    public VeterinarioService(VeterinarioRepository veterinarioRepository, CitaRepository citaRepository) {
         this.veterinarioRepository = veterinarioRepository;
+        this.citaRepository = citaRepository;
     }
     public List<Veterinario> listar() { return veterinarioRepository.findAll(); }
     public Veterinario buscarPorId(Long id) {
@@ -33,7 +36,13 @@ public class VeterinarioService {
         actual.setActivo(datos.getActivo());
         return veterinarioRepository.save(actual);
     }
-    public void eliminar(Long id) { veterinarioRepository.delete(buscarPorId(id)); }
+    public void eliminar(Long id) {
+        Veterinario veterinario = buscarPorId(id);
+        if (citaRepository.existsByVeterinarioId(id))
+            throw new ReglaNegocioException(
+                "El veterinario tiene citas registradas; desactívelo (activo=false) en lugar de eliminarlo");
+        veterinarioRepository.delete(veterinario);
+    }
     private void validarColegiatura(String colegiatura, Long idActual) {
         if (colegiatura == null || colegiatura.isBlank())
             throw new ReglaNegocioException("La colegiatura es obligatoria");

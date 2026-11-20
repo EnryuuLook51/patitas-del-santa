@@ -2,6 +2,7 @@ package pe.edu.uns.patitas.controller;
 
 import pe.edu.uns.patitas.exception.RecursoNoEncontradoException;
 import pe.edu.uns.patitas.exception.ReglaNegocioException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -20,6 +21,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ReglaNegocioException.class)
     public ResponseEntity<Map<String,Object>> manejarRegla(ReglaNegocioException ex) {
         return respuesta(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String,Object>> manejarIntegridad(DataIntegrityViolationException ex) {
+        return respuesta(HttpStatus.CONFLICT,
+                "La operación viola la integridad de los datos (registro duplicado o referenciado por otro)");
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String,Object>> manejarValidacion(MethodArgumentNotValidException ex) {

@@ -42,7 +42,10 @@ public class CitaService {
     }
     public Cita actualizar(Long id, Cita datos) {
         Cita actual = buscarPorId(id);
-        validarFecha(datos.getFechaHora());
+        // Solo se valida la fecha si se reprograma: una cita puede marcarse ATENDIDA después de su hora.
+        if (datos.getFechaHora() == null || !datos.getFechaHora().isEqual(actual.getFechaHora())) {
+            validarFecha(datos.getFechaHora());
+        }
         validarCosto(datos.getCosto());
         Mascota mascota = buscarMascota(datos.getMascota());
         Veterinario veterinario = buscarVeterinario(datos.getVeterinario());

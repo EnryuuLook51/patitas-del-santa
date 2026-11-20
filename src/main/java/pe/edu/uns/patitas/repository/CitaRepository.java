@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CitaRepository extends JpaRepository<Cita, Long> {
     List<Cita> findByVeterinarioIdAndEstado(Long veterinarioId, EstadoCita estado);
+
+    boolean existsByVeterinarioId(Long veterinarioId);
 }
